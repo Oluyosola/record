@@ -46,13 +46,15 @@ if(isset($_POST['submit'])){
     $firstname = $_POST['firstname'];
     $email = $_POST['email'];
     
-    $age = $_POST['age'];
+     $age = $_POST['age'];
     
                 // $dob = new DateTime('$age');
                 // $today = new DateTime('now');
                 // $age = $dob->diff($today)->y;
-    mysqli_query($conn, "INSERT INTO patients (lastname, firstname, email, age) VALUES ('$lastname', '$firstname', '$email', '$age')");
+     mysqli_query($conn, "INSERT INTO patients (lastname, firstname, email, age) VALUES ('$lastname', '$firstname', email, age)");
+    
     echo "<h1> REGISTRATION SUCCESSFUL</h1>";
+
 }
 // To output records saved in database in a table format
 $results = mysqli_query($conn, "SELECT lastname, firstname,email,age, id FROM patients");
@@ -76,10 +78,7 @@ $results = mysqli_query($conn, "SELECT lastname, firstname,email,age, id FROM pa
                 <td> <?php echo$row['firstname'] ?></td>
                 <td> <?php echo$row['lastname'] ?></td>
                 <td> <?php echo$row['email'] ?></td>
-                <td> <?php 
-                
-                
-                echo$row['age'] ?></td>
+                <td> <?php echo$row['age'] ?></td>
                 <td><a href="update.php?edit= <?php echo $row['id'];?>"> edit</a></td>
                 <td><a href="patient.php?delete= <?php echo $row['id'];?>"> delete</a></td>
             </tr>
